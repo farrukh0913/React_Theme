@@ -3,17 +3,22 @@ import '../styles/topbar.css'
 import { useTranslation } from 'react-i18next';
 
 function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang }) {
+    const { t, i18n } = useTranslation();
+    const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
+
+    const toggleLanguage = (lang) => {
+        i18n.changeLanguage(lang);
+        setCurrentLanguage(lang);
+    };
     const [menuOpen, setmenuOpen] = useState(false)
     const [selectedImg, setselectedImg] = useState('https://cdn.pixabay.com/photo/2012/04/10/16/14/union-jack-26119_640.png')
-    const { t } = useTranslation();
     const toggleMenu = () => {
         setmenuOpen(prev => !prev)
     }
-    const itemClick = (pic) => {
+    const itemClick = (pic, lang) => {
         setselectedImg(pic)
         setmenuOpen(false)
-        toggleLang()
-
+        toggleLanguage(lang)
     }
     return (
         <div className="App">
@@ -38,14 +43,14 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang }) 
                         </div>
                         {menuOpen && <div className="menu-list" >
                             <div
-                                onClick={() => itemClick('https://cdn.pixabay.com/photo/2012/04/10/16/14/union-jack-26119_640.png')}
+                                onClick={() => itemClick('https://cdn.pixabay.com/photo/2012/04/10/16/14/union-jack-26119_640.png', 'en')}
                             >
                                 <img alt='sd'
                                     src="https://cdn.pixabay.com/photo/2012/04/10/16/14/union-jack-26119_640.png"
                                 /><span> EN</span>
                             </div>
                             <div
-                                onClick={() => itemClick('https://static4.depositphotos.com/1009841/285/i/450/depositphotos_2858036-stock-photo-flag-of-france.jpg')}
+                                onClick={() => itemClick('https://static4.depositphotos.com/1009841/285/i/450/depositphotos_2858036-stock-photo-flag-of-france.jpg', 'fr')}
                             >
                                 <img alt='df'
                                     src="https://static4.depositphotos.com/1009841/285/i/450/depositphotos_2858036-stock-photo-flag-of-france.jpg"

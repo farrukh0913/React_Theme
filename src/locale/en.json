@@ -6,6 +6,7 @@
         "orders": "Orders",
         "products": "Products",
         "light": "Light",
-        "dark": "Dark"
+        "dark": "Dark",
+        "customers": "Customers"
     }
 }
