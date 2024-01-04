@@ -67,7 +67,7 @@ function Sidenav({ sidenavState, isLight }) {
                 <div className={`sidenav-${sidenavState} d-flex flex-column flex-shrink-0 p-3 ${isLight ? 'text-black bg-light' : 'text-white bg-dark'} full-topbar-container`}>
                     <a href="/" className={`d-flex align-items-center mb-3 mb-md-0 me-md-auto ${isLight ? 'text-black' : 'text-white'} text-decoration-none`}>
                         <svg fill="currentColor" className="bi me-2" width="40" height="32" ><use xlinkHref="#bootstrap" /></svg>
-                        <span className="fs-4">{t('sidenav.title')}</span>
+                        {sidenavState === 'open' && <span className="fs-4">{t('sidenav.title')}</span>}
                     </a>
                     <hr />
                     <ul className="nav nav-pills flex-column mb-auto">
