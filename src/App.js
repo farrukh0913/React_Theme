@@ -1,23 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Header from './components/topbar';
+import Sidenav from './components/sidenav';
+import React, { useState } from 'react';
 function App() {
+  const [sidenavState, setSidenavState] = useState('open');
+  const [isLightTheme, setisLightTheme] = useState(false);
+
+  const toggleTheme = () => {
+    setisLightTheme(!isLightTheme);
+
+  }
+
+  const toggleSidenav = () => {
+    switch (sidenavState) {
+      case 'halfClosed':
+        setSidenavState('fullyClosed');
+        break;
+      case 'fullyClosed':
+        setSidenavState('open');
+        break;
+      case 'open':
+        setSidenavState('halfClosed');
+        break;
+      default:
+        break;
+    }
+    console.log(sidenavState)
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header onMenuButtonClick={toggleSidenav} onThemeButtonClick={toggleTheme} isLight={isLightTheme} />
+      {sidenavState !== 'fullyClosed' && <Sidenav sidenavState={sidenavState} isLight={isLightTheme} />}
     </div>
   );
 }
