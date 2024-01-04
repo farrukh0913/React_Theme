@@ -11,6 +11,8 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight }) {
     }
     const itemClick = (pic) => {
         setselectedImg(pic)
+        setmenuOpen(false)
+
     }
     return (
         <div className="App">
