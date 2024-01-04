@@ -1,0 +1,11 @@
+{
+    "sidenav": {
+        "title": "Sidebar",
+        "home": "Home",
+        "dashboard": "Dashboard",
+        "orders": "Orders",
+        "products": "Products",
+        "light": "Light",
+        "dark": "Dark"
+    }
+}

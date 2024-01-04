@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/sidenav.css'
+import { useTranslation } from 'react-i18next';
 function Sidenav({ sidenavState, isLight }) {
+    const { t } = useTranslation();
     return (
         <>
             <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }}>
@@ -65,38 +67,38 @@ function Sidenav({ sidenavState, isLight }) {
                 <div className={`sidenav-${sidenavState} d-flex flex-column flex-shrink-0 p-3 ${isLight ? 'text-black bg-light' : 'text-white bg-dark'} full-topbar-container`}>
                     <a href="/" className={`d-flex align-items-center mb-3 mb-md-0 me-md-auto ${isLight ? 'text-black' : 'text-white'} text-decoration-none`}>
                         <svg fill="currentColor" className="bi me-2" width="40" height="32" ><use xlinkHref="#bootstrap" /></svg>
-                        <span className="fs-4">Sidebar</span>
+                        <span className="fs-4">{t('sidenav.title')}</span>
                     </a>
                     <hr />
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className={`nav-item nav-item-${sidenavState}`}>
                             <a href="#" className={`nav-link active nav-item-${sidenavState} `} aria-current="page">
                                 <svg fill="currentColor" className={`bi me-2 custom-svg-${sidenavState} custom-svg`} ><use xlinkHref="#home" /></svg>
-                                {sidenavState === 'open' && <span>Home</span>}
+                                {sidenavState === 'open' && <span>{t('sidenav.home')}</span>}
                             </a>
                         </li>
                         <li className={`custom-nav-item-${sidenavState}`}>
                             <a href="#" className={`nav-link ${isLight ? 'text-black' : 'text-white'}`}>
                                 <svg fill="currentColor" className={`bi me-2 custom-svg-${sidenavState} custom-svg`} ><use xlinkHref="#speedometer2" /></svg>
-                                {sidenavState === 'open' && <span>Dashboard</span>}
+                                {sidenavState === 'open' && <span>{t('sidenav.dashboard')}</span>}
                             </a>
                         </li>
                         <li className={`custom-nav-item-${sidenavState}`}>
                             <a href="#" className={`nav-link ${isLight ? 'text-black' : 'text-white'}`}>
                                 <svg fill="currentColor" className={`bi me-2 custom-svg-${sidenavState} custom-svg`}><use xlinkHref="#table" /></svg>
-                                {sidenavState === 'open' && <span>Orders</span>}
+                                {sidenavState === 'open' && <span>{t('sidenav.orders')}</span>}
                             </a>
                         </li>
                         <li className={`custom-nav-item-${sidenavState}`}>
                             <a href="#" className={`nav-link ${isLight ? 'text-black' : 'text-white'}`}>
                                 <svg fill="currentColor" className={`bi me-2 custom-svg-${sidenavState} custom-svg`}><use xlinkHref="#grid" /></svg>
-                                {sidenavState === 'open' && <span>Products</span>}
+                                {sidenavState === 'open' && <span>{t('sidenav.products')}</span>}
                             </a>
                         </li>
                         <li className={`custom-nav-item-${sidenavState}`}>
                             <a href="#" className={`nav-link ${isLight ? 'text-black' : 'text-white'}`}>
                                 <svg fill="currentColor" className={`bi me-2 custom-svg-${sidenavState} custom-svg`}><use xlinkHref="#people-circle" /></svg>
-                                {sidenavState === 'open' && <span>Customers</span>}
+                                {sidenavState === 'open' && <span>{t('sidenav.customers')}</span>}
                             </a>
                         </li>
                     </ul>

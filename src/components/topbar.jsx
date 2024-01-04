@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import '../styles/topbar.css'
+import { useTranslation } from 'react-i18next';
 
-
-function Header({ onMenuButtonClick, onThemeButtonClick, isLight }) {
+function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang }) {
     const [menuOpen, setmenuOpen] = useState(false)
     const [selectedImg, setselectedImg] = useState('https://cdn.pixabay.com/photo/2012/04/10/16/14/union-jack-26119_640.png')
-
+    const { t } = useTranslation();
     const toggleMenu = () => {
         setmenuOpen(prev => !prev)
     }
     const itemClick = (pic) => {
         setselectedImg(pic)
         setmenuOpen(false)
+        toggleLang()
 
     }
     return (
@@ -26,7 +27,7 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight }) {
                 </div>
                 <div className='theme-icon-container' onClick={onThemeButtonClick}>
                     <i className="fa-regular fa-moon"></i>
-                    <span>{isLight ? 'Light' : 'Dark'}</span>
+                    <span>{isLight ? t('sidenav.light') : t('sidenav.dark')}</span>
                 </div>
                 <div className="language-change-container">
 

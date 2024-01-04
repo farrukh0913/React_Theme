@@ -1,0 +1,11 @@
+{
+    "sidenav": {
+        "title": "Barre latérale",
+        "home": "Maison",
+        "dashboard": "Tableau de bord",
+        "orders": "Ordres",
+        "products": "Des produits",
+        "light": "Lumière",
+        "dark": "Sombre"
+    }
+}
