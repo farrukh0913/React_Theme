@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, login }) {
     const { t, i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-
+    const [isHovered, setIsHovered] = useState(false);
+    const [showText, setShowText] = useState(false);
     const toggleLanguage = (lang) => {
         i18n.changeLanguage(lang);
         setCurrentLanguage(lang);
@@ -19,6 +20,23 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, lo
         setselectedImg(pic)
         setmenuOpen(false)
         toggleLanguage(lang)
+    }
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+        setTimeout(() => {
+            setShowText(true);
+        }, 200);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+
+        setShowText(false);
+
+    };
+    const hoverStyle = {
+        width: isHovered ? '100px' : '40px',
+        transition: 'width 0.3s ease-in-out'
     }
     return (
         <div className="App">
@@ -36,10 +54,7 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, lo
                 </div>
 
                 <div className="language-change-container">
-                    <div className={`${isLight ? 'logout-bt-container-light' : 'logout-bt-container'}`} onClick={login}>
-                        <i className={`fa-solid fa-arrow-right-from-bracket`}></i>
-                        <span>Log Out</span>
-                    </div>
+
                     <div className="menu-container">
 
                         <div className="menu-header" onClick={toggleMenu}>
@@ -61,6 +76,12 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, lo
                                 /><span>FR</span>
                             </div>
                         </div>}
+
+                    </div>
+                    <div style={hoverStyle} onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave} className={`${isLight ? 'logout-bt-container-light' : 'logout-bt-container'}`} onClick={login}>
+                        <i className={`fa-solid fa-arrow-right-from-bracket`}></i>
+                        {showText && <span >Log Out</span>}
 
                     </div>
                 </div>

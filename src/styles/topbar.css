@@ -33,7 +33,7 @@
     }
 
     .language-change-container {
-        width: 200px;
+        width: 150px;
         height: 100%;
         /* background-color: bisque; */
         display: flex;
@@ -145,10 +145,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    margin-right: 10px;
 
     span {
         margin-left: 6px;
         margin-bottom: 4px;
+
     }
 
     /* position: absolute; */
@@ -165,6 +167,7 @@
     align-items: center;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
 
     span {
         margin-left: 6px;
