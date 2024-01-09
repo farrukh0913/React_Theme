@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/sidenav.css'
 import { useTranslation } from 'react-i18next';
-function Sidenav({ sidenavState, isLight }) {
+function Sidenav({ sidenavState, isLight, login }) {
     const { t } = useTranslation();
     return (
         <>
@@ -102,7 +102,19 @@ function Sidenav({ sidenavState, isLight }) {
                             </a>
                         </li>
                     </ul>
+                    <div>
+                        <ul className="nav nav-pills flex-column mb-auto">
+                            <li className={`nav-item nav-item-${sidenavState}`} onClick={login}>
+                                <a href="#" className={`nav-link active nav-item-${sidenavState} `} aria-current="page">
+                                    <i className={`fa-solid fa-arrow-right-from-bracket custom-svg-${sidenavState} custom-svg`}></i>
+
+                                    {sidenavState === 'open' && <span style={{ marginLeft: '10px' }}>{t('sidenav.login')}</span>}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <hr />
+
                     <div className="dropdown">
                         <a href="#" className={`d-flex align-items-center ${isLight ? 'text-black' : 'text-white'} text-decoration-none dropdown-toggle`} id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2" />

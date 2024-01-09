@@ -3,16 +3,20 @@ import './App.css';
 import Header from './components/topbar';
 import Sidenav from './components/sidenav';
 import React, { useState } from 'react';
+import Login from './components/login';
 function App() {
   const [sidenavState, setSidenavState] = useState('open');
   const [isLightTheme, setisLightTheme] = useState(false);
+  const [islogin, setislogin] = useState(false);
+
 
 
   const toggleTheme = () => {
     setisLightTheme(!isLightTheme);
-
   }
-
+  const loginf = () => {
+    setislogin(prev => !prev)
+  }
   const toggleSidenav = () => {
     switch (sidenavState) {
       case 'halfClosed':
@@ -30,8 +34,14 @@ function App() {
   };
   return (
     <div className="App">
-      <Header onMenuButtonClick={toggleSidenav} onThemeButtonClick={toggleTheme} isLight={isLightTheme} />
-      {sidenavState !== 'fullyClosed' && <Sidenav sidenavState={sidenavState} isLight={isLightTheme} />}
+      {islogin ? (
+        <>
+          <Header onMenuButtonClick={toggleSidenav} onThemeButtonClick={toggleTheme} isLight={isLightTheme} />
+          {sidenavState !== 'fullyClosed' && <Sidenav sidenavState={sidenavState} isLight={isLightTheme} login={loginf} />}
+        </>
+      ) : (
+        <Login login={loginf} />
+      )}
     </div>
   );
 }
