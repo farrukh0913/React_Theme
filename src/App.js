@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       {islogin ? (
         <>
-          <Header onMenuButtonClick={toggleSidenav} onThemeButtonClick={toggleTheme} isLight={isLightTheme} />
+          <Header onMenuButtonClick={toggleSidenav} onThemeButtonClick={toggleTheme} isLight={isLightTheme} login={loginf} />
           {sidenavState !== 'fullyClosed' && <Sidenav sidenavState={sidenavState} isLight={isLightTheme} login={loginf} />}
         </>
       ) : (

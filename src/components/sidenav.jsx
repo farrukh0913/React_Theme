@@ -107,7 +107,6 @@ function Sidenav({ sidenavState, isLight, login }) {
                             <li className={`nav-item nav-item-${sidenavState}`} onClick={login}>
                                 <a href="#" className={`nav-link active nav-item-${sidenavState} `} aria-current="page">
                                     <i className={`fa-solid fa-arrow-right-from-bracket custom-svg-${sidenavState} custom-svg`}></i>
-
                                     {sidenavState === 'open' && <span style={{ marginLeft: '10px' }}>{t('sidenav.login')}</span>}
                                 </a>
                             </li>

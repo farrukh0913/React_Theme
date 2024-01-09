@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../styles/topbar.css'
 import { useTranslation } from 'react-i18next';
 
-function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang }) {
+function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, login }) {
     const { t, i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
@@ -31,11 +31,15 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang }) 
 
                 </div>
                 <div className='theme-icon-container' onClick={onThemeButtonClick}>
-                    <i className="fa-regular fa-moon"></i>
+                    {isLight ? <i class="fa-regular fa-sun"></i> : <i className="fa-regular fa-moon"></i>}
                     <span>{isLight ? t('sidenav.light') : t('sidenav.dark')}</span>
                 </div>
-                <div className="language-change-container">
 
+                <div className="language-change-container">
+                    <div className={`${isLight ? 'logout-bt-container-light' : 'logout-bt-container'}`} onClick={login}>
+                        <i className={`fa-solid fa-arrow-right-from-bracket`}></i>
+                        <span>Log Out</span>
+                    </div>
                     <div className="menu-container">
 
                         <div className="menu-header" onClick={toggleMenu}>
