@@ -35,10 +35,13 @@
     .language-change-container {
         width: 150px;
         height: 100%;
-        /* background-color: bisque; */
         display: flex;
-        justify-content: space-between;
+        flex-direction: row-reverse;
         align-items: center;
+
+        a {
+            text-decoration: none;
+        }
     }
 }
 
@@ -138,7 +141,7 @@
 .logout-bt-container {
     width: 100px;
     height: 70%;
-    background-color: #0D6EFD;
+    background-color: #5a6560;
     border-radius: 10px;
     color: white;
     display: flex;

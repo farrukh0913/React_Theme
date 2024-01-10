@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import '../styles/topbar.css'
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
-function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, login }) {
+function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang }) {
     const { t, i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
     const [isHovered, setIsHovered] = useState(false);
@@ -36,6 +37,7 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, lo
     };
     const hoverStyle = {
         width: isHovered ? '100px' : '40px',
+        height: '30px',
         transition: 'width 0.3s ease-in-out'
     }
     return (
@@ -54,6 +56,14 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, lo
                 </div>
 
                 <div className="language-change-container">
+                    <Link to="/">
+                        <div style={hoverStyle} onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave} className={`${isLight ? 'logout-bt-container-light' : 'logout-bt-container'}`}>
+                            <i className={`fa-solid fa-arrow-right-from-bracket`}></i>
+                            {showText && <span >Log Out</span>}
+
+                        </div>
+                    </Link>
 
                     <div className="menu-container">
 
@@ -78,12 +88,7 @@ function Header({ onMenuButtonClick, onThemeButtonClick, isLight, toggleLang, lo
                         </div>}
 
                     </div>
-                    <div style={hoverStyle} onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave} className={`${isLight ? 'logout-bt-container-light' : 'logout-bt-container'}`} onClick={login}>
-                        <i className={`fa-solid fa-arrow-right-from-bracket`}></i>
-                        {showText && <span >Log Out</span>}
 
-                    </div>
                 </div>
             </div>
         </div>

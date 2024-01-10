@@ -1,5 +1,6 @@
 import '../styles/login.css'
-function Login({ login }) {
+import { Link } from "react-router-dom"
+function Login() {
     return (
         <>
             <div className='login-main-container'>
@@ -13,7 +14,10 @@ function Login({ login }) {
                         <div className="input-group">
                             <input type="password" id="password" name="password" placeholder="Password" required />
                         </div>
-                        <button type="submit" onClick={login}>Login</button>
+
+                        <Link to="/home">
+                            <button type="submit" routerLink>Login</button>
+                        </Link>
                         <div className="bottom-text">
                             <p>Don't have an account? <a href="#">Sign Up</a></p>
                             <p><a href="#">Forgot password?</a></p>

@@ -32,6 +32,10 @@ main {
     border-radius: 0;
 }
 
+.nav-pills .nav-link.active {
+    background-color: #5a6560 !important;
+}
+
 .btn-toggle {
     display: inline-flex;
     align-items: center;
@@ -132,4 +136,8 @@ main {
 
 .custom-nav-item-halfClosed {
     margin-top: 15px;
+}
+
+a {
+    text-decoration: none;
 }

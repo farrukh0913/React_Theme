@@ -1,7 +1,8 @@
 import React from 'react';
 import '../styles/sidenav.css'
 import { useTranslation } from 'react-i18next';
-function Sidenav({ sidenavState, isLight, login }) {
+import { Link } from "react-router-dom"
+function Sidenav({ sidenavState, isLight }) {
     const { t } = useTranslation();
     return (
         <>
@@ -65,14 +66,10 @@ function Sidenav({ sidenavState, isLight, login }) {
             </svg>
             <div style={{ display: 'flex' }}>
                 <div className={`sidenav-${sidenavState} d-flex flex-column flex-shrink-0 p-3 ${isLight ? 'text-black bg-light' : 'text-white bg-dark'} full-topbar-container`}>
-                    <a href="/" className={`d-flex align-items-center mb-3 mb-md-0 me-md-auto ${isLight ? 'text-black' : 'text-white'} text-decoration-none`}>
-                        <svg fill="currentColor" className="bi me-2" width="40" height="32" ><use xlinkHref="#bootstrap" /></svg>
-                        {sidenavState === 'open' && <span className="fs-4">{t('sidenav.title')}</span>}
-                    </a>
-                    <hr />
+
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className={`nav-item nav-item-${sidenavState}`}>
-                            <a href="#" className={`nav-link active nav-item-${sidenavState} `} aria-current="page">
+                            <a href="#" className={`nav-link active nav-item-${sidenavState}`} aria-current="page">
                                 <svg fill="currentColor" className={`bi me-2 custom-svg-${sidenavState} custom-svg`} ><use xlinkHref="#home" /></svg>
                                 {sidenavState === 'open' && <span>{t('sidenav.home')}</span>}
                             </a>
@@ -102,16 +99,7 @@ function Sidenav({ sidenavState, isLight, login }) {
                             </a>
                         </li>
                     </ul>
-                    <div>
-                        <ul className="nav nav-pills flex-column mb-auto">
-                            <li className={`nav-item nav-item-${sidenavState}`} onClick={login}>
-                                <a href="#" className={`nav-link active nav-item-${sidenavState} `} aria-current="page">
-                                    <i className={`fa-solid fa-arrow-right-from-bracket custom-svg-${sidenavState} custom-svg`}></i>
-                                    {sidenavState === 'open' && <span style={{ marginLeft: '10px' }}>{t('sidenav.login')}</span>}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
                     <hr />
 
                     <div className="dropdown">
@@ -124,7 +112,10 @@ function Sidenav({ sidenavState, isLight, login }) {
                             <li><a className="dropdown-item" href="#">Settings</a></li>
                             <li><a className="dropdown-item" href="#">Profile</a></li>
                             <li><hr className="dropdown-divider" /></li>
-                            <li><a className="dropdown-item" href="#">Sign out</a></li>
+                            <Link to="/">
+                                <li><a className="dropdown-item" href="#">Sign out</a></li>
+                            </Link>
+
                         </ul>
                     </div>
                 </div>
